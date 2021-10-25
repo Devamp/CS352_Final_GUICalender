@@ -1,0 +1,8 @@
+09-13-2021 Haskell_Homework
+09-28-2021 Polymorphism-Homework_
+10-12-2021 Memory-Homework_
+10-18-2021 Rust-Homework_
+10-25-2021 Exam-1_
+11-02-2021 Exam-2_
+12-01-2021 Exam-3_
+12-09-2021 Final-Exam_
