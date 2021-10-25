@@ -24,7 +24,6 @@ def verifyFile():
 # Read from the syllabus file
 def readFile(sentFile):
     myFile = open(sentFile, 'r')
-    month
     print(myFile.read())
 
 def main():
