@@ -31,10 +31,13 @@ def simulate(sentFile):
     root.title("Event Calendar")
     root.geometry("400x400")
     root.configure(background= "#90E7FD")
-    
+
+    #print(root.keys())
     # Set up calendar to display
-    cal = Calendar(root, selectmode="day", year=2021, month=12,)
+    cal = Calendar(root, selectmode="day", year=2021, month=12, bordercolor="black", selectbackground="red", 
+    headerbackground="white", )
     cal.pack(pady=20)
+    print(cal.keys())
 
     # open file in read mode
     myFile = open(sentFile, 'r')
@@ -50,18 +53,18 @@ def simulate(sentFile):
     
     def returnEvent(): # command function for display button
         dateAsked = cal.get_date() # get selected date
-
+    
         for date in eventList: # loop to find see if asked date matches event dates created from eventList
 
             if (date[4:12] == dateAsked): # if the selected date matches the event dates
                 mylable.config(text="    Event: " + cal.calevent_cget(int(date[0]),"text")) # print asked event given the id
                 dueLable.config(text="  Due on: " + dateAsked)
-                
-    
-                
-                
-
-    
+                break
+            else :
+                mylable.config(text="    No events for selected date!") # print asked event given the id
+                dueLable.config(text="  ")
+            
+            
     # set up display button
     displayButton = Button(root, text="Display", background="grey", command=returnEvent)
     displayButton.pack(pady=20)
@@ -83,7 +86,6 @@ def simulate(sentFile):
 def main():
     file = verifyFile()
     simulate(file)
-
 
 if __name__ == "__main__":
     main()
