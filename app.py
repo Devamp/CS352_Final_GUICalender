@@ -22,7 +22,7 @@ def verifyFile():
             print("Incorrect file type. Program only reads .txt files!")
 
 # Read from the syllabus file
-def simulate(sentFile):
+def create(sentFile):
     
     # set up GUI window
     root = Tk()
@@ -30,7 +30,6 @@ def simulate(sentFile):
     root.geometry("400x400")
     root.configure(background= "#90E7FD")
 
-    #print(root.keys())
     # Set up calendar to display
     cal = Calendar(root, selectmode="day", year=2021, month=12, bordercolor="black", selectbackground="red", 
     headerbackground="white",  )
@@ -49,7 +48,7 @@ def simulate(sentFile):
         eventList.append(str(i) + " - " + (list[1] + "/" +list[2] + "/" + list[3].replace(tempDate,tempDate[2:4]))) # format events
         i = i+1  # increment event id
     
-    def returnEvent(): # command function for display button
+    def return_event(): # command function for display button
         dateAsked = cal.get_date() # get selected date
         for date in eventList: # loop to find see if asked date matches event dates created from eventList
             
@@ -112,7 +111,7 @@ def simulate(sentFile):
 
   
     # set up display button
-    displayButton = Button(root, text="Display", background="grey", command=returnEvent)
+    displayButton = Button(root, text="Display", background="grey", command=return_event)
     displayButton.pack(pady=5)
     displayButton.pack(padx=0)
 
@@ -142,7 +141,7 @@ def simulate(sentFile):
 
 def main():
     file = verifyFile()
-    simulate(file)
+    create(file)
 
 if __name__ == "__main__":
     main()
