@@ -2,6 +2,7 @@ from datetime import datetime
 from tkinter import *
 from tkinter.ttk import Style
 from tkcalendar import *
+import os
 
 
 # Loop until correct file is read from the user
@@ -11,13 +12,15 @@ def verifyFile():
         fileName = input("Please type the name of your syllabus file: ")
 
         if(fileName.endswith(".txt")):
-            myFile = open(fileName, 'r')
-            if(myFile.mode == 'r'):
+            if os.path.isfile(fileName): # check to make sure given file actually exists
+                myFile = open(fileName, 'r')
                 print("File opened sucessfully...")
                 print("Reading from file...")
                 print("")
                 flag = FALSE
                 return fileName
+            else:
+                print ("Given file does not exist.")
         else:
             print("Incorrect file type. Program only reads .txt files!")
 
@@ -99,31 +102,16 @@ def create(sentFile):
                     mylable.config(text=" Event deleted successfully") # print asked event given the id
                     dueLable.config(text="  ")
                 break
-
-    # def add_event():
-    #     dateToAdd = cal.get_date()
-    #     split = dateToAdd.split("/")
-    #     print(split)
-    #     c = cal.calevent_create(datetime(int(split[2]), int(split[0]), int(split[1])), "TEXT HERE", "Anything")
-    #     eventList.append(c)
-    #     t1 = Text(root)
-    #     t1.insert(END, "Input")
-
   
     # set up display button
     displayButton = Button(root, text="Display", background="grey", command=return_event)
     displayButton.pack(pady=5)
     displayButton.pack(padx=0)
 
-    # # set up addEvent button
-    # addEventButton = Button(root, text="Add Event", background="grey", command=add_event)
-    # addEventButton.pack(pady=5)
-    # addEventButton.pack(padx=0)
-
     # set up delete button
     deleteButton = Button(root, text="Delete Event", background="grey", command=del_event)
     deleteButton.pack(padx=0)
-    deleteButton.pack(pady=10)
+    deleteButton.pack(pady=5)
 
     # set up output lables
     mylable = Label(root, text="Event Here")
@@ -134,7 +122,7 @@ def create(sentFile):
 
     dueLable.config(bg="white", width="20")
     dueLable.config(font=("Arial", 12))
-    mylable.config(bg="white", width="40")
+    mylable.config(bg="white", width="30")
     mylable.config(font=("Arial", 14))
 
     root.mainloop() # end GUI loop
