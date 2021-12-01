@@ -1,3 +1,16 @@
+###################################################################
+#
+# Project: This is a simple project which reads in a .txt file containing the events/assignments for a user along
+# with the due dates for those events. Then the program returns a calendar GUI which holds all of the given
+# events along with the due dates. This program is suppose to act as a planner for the user.
+#
+# Author: Devam Patel
+# Course: CS-352
+# Date: 12/3/2021
+# 
+###################################################################
+
+# python imports used for this project
 from datetime import datetime
 from tkinter import *
 from tkinter.ttk import Style
